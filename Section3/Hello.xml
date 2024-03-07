@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<greeting>
+    <hello>
+        XML
+    </hello>
+    <!-- hello is the metadata and XML is the data for the metadata of hello -->
+</greeting>
