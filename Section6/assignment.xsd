@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.jonjoo.org/passenger"
+        xmlns:tns="http://www.jonjoo.org/passenger"
+        elementFormDefault="qualified">
+    <element name="passenger" type="tns:passenger" />
+    <complexType name="passenger">
+        <sequence>
+            <element name="name" type="string" />
+            <element name="dateOfBirth" type="date" />
+            <element name="seatnumber" type="int" />
+            <element name="gender" type="string" />
+        </sequence>
+    </complexType>
+</schema>
