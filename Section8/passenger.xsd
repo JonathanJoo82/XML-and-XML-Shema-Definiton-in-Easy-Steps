@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- Prolong -->
+
+<!-- namespace, the compiler will know the name space and the type of the xml. the source and the destination-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.bharaththippireddy.org/passenger"
+        xmlns:tns="http://www.bharaththippireddy.org/passenger"
+        elementFormDefault="qualified">
+    <element name="passenger" type="tns:passenger" />
+    <complexType name="passenger"> <!-- one of the three schema types -->
+        <sequence> <!-- assigning type to fields -->
+            <element name="name" type="tns:String15Chars" />
+            <element name="dob" type="date" />
+            <element name="seatno" type="int" />
+            <element name="gender" type="tns:GenderEnum" />
+            <element name="paymentType" type="tns:Payment"/>
+            <!-- Controlling the number of element occurances through minOccurs and maxOccurs -->
+            <element name="email" type="string" minOccurs="0"/>
+            <element name="phone" type="string" maxOccurs="3"/>
+        </sequence>
+    </complexType>
+    
+    <!-- Creating complex type. Make a choice -->
+    <complexType name="Payment">
+        <choice>
+            <element name="cash" type="decimal"/>
+            <element name="insurance" type="tns:Insurance"/>
+        </choice>
+    </complexType>
+
+    <complexType name="Insurance">
+        <all><!-- the sequence should occur but the order will not matter -->
+            <element name="provider" type="string"/>
+            <element name="limit" type="decimal"/>
+        </all>
+    </complexType>
+
+
+    
+
+    <!-- string length to fields -->
+    <simpleType name="String15Chars">
+        <restriction base="string">
+            <maxLength value="15"></maxLength>
+        </restriction>
+    </simpleType>
+    <simpleType name="GenderEnum">
+        <restriction base="string">
+            <enumeration value="M"></enumeration>
+            <enumeration value="F"></enumeration>
+        </restriction>
+    </simpleType>
+</schema>
